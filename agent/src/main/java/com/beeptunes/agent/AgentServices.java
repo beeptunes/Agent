@@ -3,22 +3,23 @@ package com.beeptunes.agent;
 import com.beeptunes.agent.Models.Album;
 import com.beeptunes.agent.Models.Artist;
 import com.beeptunes.agent.Models.DownloadLinks;
+import com.beeptunes.agent.Models.ListenInfo;
 import com.beeptunes.agent.Models.SearchResult;
 import com.beeptunes.agent.Models.Track;
 
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 /**
  * Created by javad on 12/10/2018 AD.
  */
-
-
-
 
 public interface AgentServices {
 
@@ -44,6 +45,22 @@ public interface AgentServices {
     Call<SearchResult.Albums> getArtistAlbum (@Query("id") String id, @Query("page")
             String page, @Query("size") String size);
 
-    @GET("public/agent/artist/albums")
-    Call<SearchResult.Albums> getArtistAlbum ();
+    @GET("public/agent/search?albums=6&tracks=6&artists=6")
+    Call<SearchResult> search(@Query("q") String key);
+
+    @GET("public/agent/search/album")
+    Call<SearchResult.Albums> searchAlbums (@Query("q") String key,@Query("size") String size, @Query("page") String page);
+
+    @GET("public/agent/search/track")
+    Call<SearchResult.Tracks> searchTracks (@Query("q") String key,@Query("size") String size, @Query("page") String page);
+
+    @GET("public/agent/search/artist")
+    Call<SearchResult.Artists> searchArtists (@Query("q") String key,@Query("size") String size, @Query("page") String page);
+
+    @POST("/public/agent/listen/start")
+    Call<ResponseBody> start(@Body ListenInfo info);
+
+    @POST("/public/agent/listen/finish")
+    Call<ResponseBody> finish(@Body ListenInfo info);
+
 }

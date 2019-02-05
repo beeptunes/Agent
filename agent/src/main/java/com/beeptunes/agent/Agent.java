@@ -65,15 +65,15 @@ public class Agent {
 
     }
 
+    public SearchResult.Albums latestAlbums (String size, String page) {
+        return null;
+    }
+
     public Album album (String id) {
         return null;
     }
 
     public Track track (String id) {
-        return null;
-    }
-
-    public List<Track> albumTrackList (String id) {
         return null;
     }
 
@@ -85,11 +85,14 @@ public class Agent {
         return null;
     }
 
+    public List<Track> albumTrackList (String id) {
+        return null;
+    }
+
     public SearchResult.Albums artistAlbum (String id, String page, String size) {
         return null;
     }
 
-    public SearchResult.Albums latestAlbums (String size, String page) {
-        return null;
-    }
+
+
 }
