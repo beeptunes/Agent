@@ -24,7 +24,7 @@ import retrofit2.http.Query;
 public interface AgentServices {
 
     @GET("public/agent/search/album")
-    Call<SearchResult.Albums> getLatestAlbums (@Query("size") String size, @Query("page") String page);
+    Call<SearchResult.Albums> getLatestAlbums (@Query("size") Integer size, @Query("page") Integer page);
 
     @GET("public/agent/album/info")
     Call<Album> getAlbum (@Query("id") String id);
@@ -43,19 +43,19 @@ public interface AgentServices {
 
     @GET("public/agent/artist/albums")
     Call<SearchResult.Albums> getArtistAlbum (@Query("id") String id, @Query("page")
-            String page, @Query("size") String size);
+            Integer page, @Query("size") Integer size);
 
     @GET("public/agent/search?albums=6&tracks=6&artists=6")
     Call<SearchResult> search(@Query("q") String key);
 
     @GET("public/agent/search/album")
-    Call<SearchResult.Albums> searchAlbums (@Query("q") String key,@Query("size") String size, @Query("page") String page);
+    Call<SearchResult.Albums> searchAlbums (@Query("q") String key,@Query("size") Integer size, @Query("page") Integer page);
 
     @GET("public/agent/search/track")
-    Call<SearchResult.Tracks> searchTracks (@Query("q") String key,@Query("size") String size, @Query("page") String page);
+    Call<SearchResult.Tracks> searchTracks (@Query("q") String key,@Query("size") Integer size, @Query("page") Integer page);
 
     @GET("public/agent/search/artist")
-    Call<SearchResult.Artists> searchArtists (@Query("q") String key,@Query("size") String size, @Query("page") String page);
+    Call<SearchResult.Artists> searchArtists (@Query("q") String key,@Query("size") Integer size, @Query("page") Integer page);
 
     @POST("/public/agent/listen/start")
     Call<ResponseBody> start(@Body ListenInfo info);

@@ -9,12 +9,18 @@ import android.util.Log;
 import com.beeptunes.agent.Models.Album;
 import com.beeptunes.agent.Models.Artist;
 import com.beeptunes.agent.Models.DownloadLinks;
+import com.beeptunes.agent.Models.ListenInfo;
 import com.beeptunes.agent.Models.SearchResult;
 import com.beeptunes.agent.Models.Track;
 
 import java.util.List;
 
+import okhttp3.ResponseBody;
 import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 
 
@@ -53,7 +59,7 @@ public class Agent {
     }
 
     //Should be called when needed
-    public static synchronized Agent get() {
+    private static synchronized Agent getInstance() {
         try{
             if(instance == null)
                 instance = new Agent(context);
@@ -64,6 +70,15 @@ public class Agent {
         }
 
     }
+
+    public static Agent get(){
+        return getInstance();
+    }
+
+    public static SearchResult search(String s){
+        return getInstance().searchAll(s);
+    }
+
 
     public SearchResult.Albums latestAlbums (String size, String page) {
         return null;
@@ -89,10 +104,33 @@ public class Agent {
         return null;
     }
 
-    public SearchResult.Albums artistAlbum (String id, String page, String size) {
+    public SearchResult.Albums artistAlbums (String id, String page, String size) {
         return null;
     }
 
+    private SearchResult searchAll(String term){
+        return null;
+    }
+
+    public SearchResult.Albums searchForAlbums(String key, int size, int page){
+        return null;
+    }
+
+    public SearchResult.Tracks searchForTracks(String key, int size, int page){
+        return null;
+    }
+
+    public SearchResult.Artists searchForArtists(String key, int size, int page){
+        return null;
+    }
+
+    public boolean start(ListenInfo info){
+        return true;
+    }
+
+    public boolean finish(ListenInfo info){
+        return true;
+    }
 
 
 }
