@@ -1,8 +1,5 @@
 package com.beeptunes.agent.Models;
 
-import android.content.Intent;
-
-import ir.cassette.app.R;
 
 public class Track implements MediaMaterial{
 	public Album album;
@@ -36,14 +33,6 @@ public class Track implements MediaMaterial{
 	}
 	
 	@Override
-	public Intent getContentIntent() {
-		Intent i = new Intent("playerEvent");
-		i.putExtra("message", "playbackToggle");
-		
-		return i;
-	}
-	
-	@Override
 	public String getSubTitle(){
 		String subT = null;
 		if(album != null)
@@ -53,11 +42,6 @@ public class Track implements MediaMaterial{
 		return subT;
 	}
 	
-	@Override
-	public int getDefaultDrawable(){
-		return R.drawable.default_cover;
-	}
-
 
 	@Override
 	public String toString() {
