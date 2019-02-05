@@ -38,4 +38,8 @@ class AgentClient {
 
         agent = retrofit.create(AgentServices.class);
     }
+
+    public AgentServices getAgent () {
+        return agent;
+    }
 }

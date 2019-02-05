@@ -27,22 +27,22 @@ public interface AgentServices {
     Call<SearchResult.Albums> getLatestAlbums (@Query("size") Integer size, @Query("page") Integer page);
 
     @GET("public/agent/album/info")
-    Call<Album> getAlbum (@Query("id") String id);
+    Call<Album> getAlbum (@Query("id") Long id);
 
     @GET("public/agent/track/info")
-    Call<Track> getTrack (@Query("id") String id);
+    Call<Track> getTrack (@Query("id") Long id);
 
     @GET("public/agent/album/tracks")
-    Call<List<Track>> getAlbumTracks (@Query("id") String id);
+    Call<List<Track>> getAlbumTracks (@Query("id") Long id);
 
     @GET("public/agent/track/download")
-    Call<DownloadLinks> getDownloadLinks (@Query("id") String id);
+    Call<DownloadLinks> getDownloadLinks (@Query("id") Long id);
 
     @GET("public/agent/artist/info")
-    Call<Artist> getArtist (@Query("id") String id);
+    Call<Artist> getArtist (@Query("id") Long id);
 
     @GET("public/agent/artist/albums")
-    Call<SearchResult.Albums> getArtistAlbum (@Query("id") String id, @Query("page")
+    Call<SearchResult.Albums> getArtistAlbums (@Query("id") Long id, @Query("page")
             Integer page, @Query("size") Integer size);
 
     @GET("public/agent/search?albums=6&tracks=6&artists=6")

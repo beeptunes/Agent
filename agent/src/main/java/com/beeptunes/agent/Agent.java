@@ -17,12 +17,8 @@ import java.util.List;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.http.Body;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.Query;
-
-
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /*
     Only 2 public methods. One for initializing The Agent in Application class,
@@ -75,62 +71,75 @@ public class Agent {
         return getInstance();
     }
 
-    public static SearchResult search(String s){
-        return getInstance().searchAll(s);
+    public static void search(String s , AgentCallback<SearchResult> callback){
+        getInstance().searchAll(s, callback);
     }
 
 
-    public SearchResult.Albums latestAlbums (String size, String page) {
-        return null;
+    public void latestAlbums (Integer size, Integer page, AgentCallback<SearchResult.Albums> callback) {
+        request(client.getAgent().getLatestAlbums(size, page), callback);
     }
 
-    public Album album (String id) {
-        return null;
+    public void album (Long id, AgentCallback<Album> callback) {
+        request(client.getAgent().getAlbum(id), callback);
     }
 
-    public Track track (String id) {
-        return null;
+    public void track (Long id, AgentCallback<Track> callback) {
+        request(client.getAgent().getTrack(id), callback);
     }
 
-    public DownloadLinks downloadLinks (String id) {
-        return null;
+    public void downloadLinks (Long id, AgentCallback<DownloadLinks> callback) {
+        request(client.getAgent().getDownloadLinks(id), callback);
     }
 
-    public Artist artist (String id) {
-        return null;
+    public void artist (Long id, AgentCallback<Artist> callback) {
+        request(client.getAgent().getArtist(id), callback);
     }
 
-    public List<Track> albumTrackList (String id) {
-        return null;
+    public void albumTrackList (Long id, AgentCallback<List<Track>> callback) {
+        request(client.getAgent().getAlbumTracks(id), callback);
     }
 
-    public SearchResult.Albums artistAlbums (String id, String page, String size) {
-        return null;
+    public void artistAlbums (Long id, Integer page, Integer size, AgentCallback<SearchResult.Albums> callback) {
+        request(client.getAgent().getArtistAlbums(id, page, size), callback);
     }
 
-    private SearchResult searchAll(String term){
-        return null;
+    private void searchAll(String term, AgentCallback<SearchResult> callback){
+        request(client.getAgent().search(term), callback);
     }
 
-    public SearchResult.Albums searchForAlbums(String key, int size, int page){
-        return null;
+    public void searchForAlbums(String key, Integer page, Integer size, AgentCallback<SearchResult.Albums> callback){
+        request(client.getAgent().searchAlbums(key, size, page), callback);
     }
 
-    public SearchResult.Tracks searchForTracks(String key, int size, int page){
-        return null;
+    public void searchForTracks(String key, Integer size, Integer page, AgentCallback<SearchResult.Tracks> callback){
+        request(client.getAgent().searchTracks(key, size, page), callback);
     }
 
-    public SearchResult.Artists searchForArtists(String key, int size, int page){
-        return null;
+    public void searchForArtists(String key, Integer size, Integer page, AgentCallback<SearchResult.Artists> callback){
+        request(client.getAgent().searchAlbums(key, size, page), callback);
     }
 
-    public boolean start(ListenInfo info){
-        return true;
+    public void start(ListenInfo info, AgentCallback<ResponseBody> callback){
+        request(client.getAgent().start(info), callback);
     }
 
-    public boolean finish(ListenInfo info){
-        return true;
+    public void finish(ListenInfo info, AgentCallback<ResponseBody> callback){
+        request(client.getAgent().finish(info), callback);
     }
 
+    private void request(Call call, AgentCallback callback){
+        call.enqueue(new Callback() {
+            @Override
+            public void onResponse (Call call, Response response) {
+                callback.onResponse(call, response);
+            }
+
+            @Override
+            public void onFailure (Call call, Throwable t) {
+                callback.onFailure(call, t);
+            }
+        });
+    }
 
 }

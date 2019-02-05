@@ -12,34 +12,18 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public abstract class CustomCallback<T> implements Callback<T> {
+public abstract class AgentCallback<T> implements Callback<T> {
 
-    int retryLimit;
     protected int statusCode = 0;
     Gson gson = new GsonBuilder().create();
     protected Error error;
 
     private final String TAG = this.getClass().getSimpleName();
 
-    public CustomCallback(int retryLimit) {
-        this.retryLimit = retryLimit;
-    }
-
-    public CustomCallback() {
-        this.retryLimit = 0;
-    }
-
     @Override
     public void onFailure (Call<T> call, Throwable t) {
         Log.d(TAG, "onFailure: ".concat(call.request().url().toString()));
-        if (retryLimit != 0){
-            try {
-                retryLimit--;
-                onResponse(call, call.clone().execute());
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        }
+
     }
 
     @Override
