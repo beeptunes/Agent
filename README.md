@@ -4,7 +4,7 @@ An interface to benefit Persian Music
 [![](https://jitpack.io/v/beeptunes/Agent.svg)](https://jitpack.io/#beeptunes/Agent)
 
 ### Gain Access to API Key 
-To obtain your API key, [contact us](mailto://info@beeptunes.com) and after agreeing on a contract, we'll give you access to the archive.
+To obtain your API key, [contact us](mailto:info@beeptunes.com) and after agreeing on a contract, we'll give you access to the archive.
 
 
 ### Installation
