@@ -25,14 +25,14 @@ Copyright 2019 https://beeptunes.ca/
 class AgentClient {
 
     private static final String URL = "http://newapi.beeptunes.com";
-    private String token;
+    private String apiKey;
     private HttpLoggingInterceptor logger;
     private OkHttpClient client;
     private Retrofit retrofit;
     private AgentServices agent;
 
-    AgentClient (String token) {
-        this.token = token;
+    AgentClient (String apiKey) {
+        this.apiKey = apiKey;
         this.logger = new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY);
         this.client = new OkHttpClient.Builder()
                 .addNetworkInterceptor(logger)
@@ -40,7 +40,7 @@ class AgentClient {
                     Request request = chain
                             .request()
                             .newBuilder()
-                            .addHeader("X-BT-AGENT-SECRET", token)
+                            .addHeader("X-BT-AGENT-SECRET", apiKey)
                             .addHeader("Accept", "Application/JSON")
                             .build();
                     return chain.proceed(request);

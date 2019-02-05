@@ -46,7 +46,7 @@ public class Agent {
 
     private static Context context;
     private static AgentClient client;
-    private static String token = "";
+    private static String apiKey = "";
     //--------------------------------
     private static Agent instance = null;
 
@@ -55,21 +55,30 @@ public class Agent {
         try {
             ApplicationInfo info = ctx.getPackageManager().getApplicationInfo(ctx.getPackageName(), PackageManager.GET_META_DATA);
             Bundle bundle = info.metaData;
-            token = bundle.getString("com.beeptunes.agent.btToken");
+            apiKey = bundle.getString("com.beeptunes.agent.apiKey");
 
         } catch (PackageManager.NameNotFoundException e) {
             e.printStackTrace();
             Log.e("Beeptunes", "Beeptunes agent token not set in Manifest");
         }
 
-        client = new AgentClient(token);
+        client = new AgentClient(apiKey);
+    }
+
+    private Agent(String apiKey){
+        instance = new Agent(apiKey);
     }
 
     // Should be called in App class, otherwise using get()
     // method will throw NPE
-    public static void init(Context ctx){
-        instance = new Agent(ctx);
+//    public static void init(Context ctx){
+//        instance = new Agent(ctx);
+//    }
+
+    public static void init(String apiKey){
+        instance = new Agent(apiKey);
     }
+
 
     //Should be called when needed
     private static synchronized Agent getInstance() {
