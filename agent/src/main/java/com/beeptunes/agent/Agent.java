@@ -66,7 +66,7 @@ public class Agent {
     }
 
     private Agent(String apiKey){
-        instance = new Agent(apiKey);
+        client = new AgentClient(apiKey);
     }
 
     // Should be called in App class, otherwise using get()
@@ -76,7 +76,8 @@ public class Agent {
 //    }
 
     public static void init(String apiKey){
-        instance = new Agent(apiKey);
+        if(instance == null)
+            instance = new Agent(apiKey);
     }
 
 
