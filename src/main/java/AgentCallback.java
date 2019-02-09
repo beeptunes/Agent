@@ -1,8 +1,3 @@
-package com.beeptunes.agent;
-
-import android.util.Log;
-
-import com.beeptunes.agent.Models.Error;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -38,13 +33,13 @@ public abstract class AgentCallback<T> implements Callback<T> {
 
     @Override
     public void onFailure (Call<T> call, Throwable t) {
-        Log.d(TAG, "onFailure: ".concat(call.request().url().toString()));
-
+        System.out.println(TAG + "onFailure: " + call.request().url().toString());
     }
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
-        Log.d(TAG, "onResponse: ".concat(response.toString()));
+        System.out.println(TAG + "onFailure: " + "onResponse: " + response.toString());
+
         statusCode = response.code();
         if(response.code() >= 400) { //Error
             try {

@@ -1,4 +1,4 @@
-package com.beeptunes.agent.Models;
+package Models;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ public class SearchResult {
     Tracks tracks;
 
     public ArrayList<MediaMaterial> getMediaMaterials(){
-        ArrayList<MediaMaterial> list = new ArrayList<>();
+        ArrayList<MediaMaterial> list = new ArrayList<MediaMaterial>();
 
         if(artists.data != null)
             list.addAll(artists.data);

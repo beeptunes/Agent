@@ -1,4 +1,4 @@
-package com.beeptunes.agent.Models;
+package Models;
 
 /**
  * Created by javad on 12/29/2018 AD.

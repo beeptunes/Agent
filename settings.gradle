@@ -1,2 +1,2 @@
-include ':agent'
+rootProject.name = 'agent'
 

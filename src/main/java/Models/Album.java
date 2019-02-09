@@ -1,4 +1,4 @@
-package com.beeptunes.agent.Models;
+package Models;
 
 
 import okhttp3.MediaType;
