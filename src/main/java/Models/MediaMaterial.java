@@ -1,8 +1,22 @@
 package Models;
 
 
-public interface MediaMaterial {
-	public String getTitle();
-	public String getSubTitle();
-	public String getImageUrl();
+public abstract class MediaMaterial {
+
+	abstract public String getId();
+	abstract public String getName();
+	abstract public String getOwnerName();
+	abstract public String getImageUrl();
+
+	@Override
+	public String toString() {
+		return "MediaMaterial{" +
+				"Name:" + getName() +
+				"Owner:" + getOwnerName() +
+				"}";
+	}
+	@Override
+	public boolean equals(Object obj) {
+		return getId().equals(obj);
+	}
 }

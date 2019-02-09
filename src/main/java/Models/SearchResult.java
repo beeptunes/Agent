@@ -1,44 +1,59 @@
 package Models;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SearchResult {
-    Albums albums;
-    Artists artists;
-    Tracks tracks;
+    private Albums albums;
+    private Artists artists;
+    private Tracks tracks;
 
-    public ArrayList<MediaMaterial> getMediaMaterials(){
-        ArrayList<MediaMaterial> list = new ArrayList<MediaMaterial>();
-
-        if(artists.data != null)
-            list.addAll(artists.data);
-        if(albums != null)
-            list.addAll(albums.data);
-        if(tracks != null)
-            list.addAll(tracks.data);
-
-
-
-        return list;
-    }
-
-    public int[] getCountArray(){
-        int[] c = new int[3];
-        c[0] = artists == null ? 0 : artists.data.size();
-        c[1] = albums == null ? 0 : albums.data.size();
-        c[2] = tracks == null ? 0 : tracks.data.size();
-
-        return c;
-    }
 
     public abstract class SearchMasterItems<T> {
-        public List<T> data;
-        public Pagination pagination;
+        List<T> data;
+        Pagination pagination;
+
+        public List<T> getData() {
+            return data;
+        }
+
+        public void setData(List<T> data) {
+            this.data = data;
+        }
+
+        public Pagination getPagination() {
+            return pagination;
+        }
+
+        public void setPagination(Pagination pagination) {
+            this.pagination = pagination;
+        }
+
+        @Override
+        public String toString() {
+            return "SearchMasterItems{" +
+                    "data=" + data.size() +
+                    '}';
+        }
     }
     public class Pagination {
-        public int numPages;
-        public String next;
+        int numPages;
+        String next;
+
+        public int getNumPages() {
+            return numPages;
+        }
+
+        public void setNumPages(int numPages) {
+            this.numPages = numPages;
+        }
+
+        public String getNext() {
+            return next;
+        }
+
+        public void setNext(String next) {
+            this.next = next;
+        }
     }
     public class Albums extends SearchMasterItems<Album> {
 
@@ -48,5 +63,29 @@ public class SearchResult {
     }
     public class Artists extends SearchMasterItems<Artist> {
 
+    }
+
+    public Albums getAlbums() {
+        return albums;
+    }
+
+    public void setAlbums(Albums albums) {
+        this.albums = albums;
+    }
+
+    public Artists getArtists() {
+        return artists;
+    }
+
+    public void setArtists(Artists artists) {
+        this.artists = artists;
+    }
+
+    public Tracks getTracks() {
+        return tracks;
+    }
+
+    public void setTracks(Tracks tracks) {
+        this.tracks = tracks;
     }
 }

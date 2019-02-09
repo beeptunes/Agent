@@ -3,12 +3,52 @@ package Models;
 
 public class ErrorDetail {
 
-    public int code;
-    public String type;
-    public String message;
-    public String parameter;
-    public Entity entity;
+    private int code;
+    private String type;
+    private String message;
+    private String parameter;
+    private Entity entity;
 
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public String getParameter() {
+        return parameter;
+    }
+
+    public void setParameter(String parameter) {
+        this.parameter = parameter;
+    }
+
+    public Entity getEntity() {
+        return entity;
+    }
+
+    public void setEntity(Entity entity) {
+        this.entity = entity;
+    }
 
     @Override
     public String toString () {
@@ -22,7 +62,7 @@ public class ErrorDetail {
     }
 
     public class Entity{
-        public String type;
+        String type;
 
         @Override
         public String toString () {

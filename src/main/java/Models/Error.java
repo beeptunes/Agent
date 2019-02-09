@@ -2,25 +2,33 @@ package Models;
 
 public class Error {
 
-    public ErrorDetail error;
+    private ErrorDetail error;
 
     public int getCode () {
-        return error.code;
+        return error.getCode();
     }
 
     public String getType () {
-        return error.type;
+        return error.getType();
     }
 
     public String getMessage () {
-        return error.message;
+        return error.getMessage();
     }
 
     public String getParameter () {
-        return error.parameter;
+        return error.getParameter();
     }
 
     public ErrorDetail.Entity getEntity () {
-        return error.entity;
+        return error.getEntity();
+    }
+
+
+    public ErrorDetail getError() {
+        return error;
+    }
+    public void setError(ErrorDetail error) {
+        this.error = error;
     }
 }

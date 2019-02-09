@@ -15,14 +15,14 @@ public class DownloadLinks {
         public String crc;
     }
 
-    public class L64 extends Quality{
+    private class L64 extends Quality{
 
     }
-    public class L128 extends Quality{
+    private class L128 extends Quality{
 
     }
 
-    public class H320 extends Quality{
+    private class H320 extends Quality{
 
     }
 
