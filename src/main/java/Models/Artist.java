@@ -10,6 +10,14 @@ public class Artist extends MediaMaterial{
     private String id;
     private int likeCount;
 
+    public Artist() {
+    }
+
+    public Artist(String id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
     public String getArtistImage() {
         return artistImage;
     }

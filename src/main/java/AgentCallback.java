@@ -40,7 +40,7 @@ public abstract class AgentCallback<T> implements Callback<T> {
 
     @Override
     public void onResponse(Call<T> call, Response<T> response) {
-        System.out.println(TAG + "onFailure: " + "onResponse: " + response.toString());
+        System.out.println(TAG + "onResponse: " + response.toString());
 
         statusCode = response.code();
         if(response.code() >= 400) { //Error

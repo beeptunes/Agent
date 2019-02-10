@@ -19,7 +19,14 @@ public class Track extends MediaMaterial {
 	private int listens;
 	private int likes;
 	private Artist[] artists;
-	
+
+	public Track() {
+	}
+
+	public Track(String id, String name) {
+		this.id = id;
+		this.name = name;
+	}
 
 	@Override
 	public String getImageUrl() {

@@ -91,4 +91,13 @@ public class Album extends MediaMaterial {
 	}
 
 
+	public Album() {
+
+	}
+
+	public Album(String id, String name, String image) {
+		this.id = id;
+		this.name = name;
+		this.image = image;
+	}
 }

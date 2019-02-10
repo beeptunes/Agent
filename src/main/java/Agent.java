@@ -30,13 +30,12 @@ import retrofit2.Response;
 
 public class Agent {
 
-    private static String apiKey = "";
-    private static AgentClient client = new AgentClient(apiKey);
-    //--------------------------------
     private static Agent instance = null;
+    private static AgentClient client;
+
 
     private Agent(String apiKey){
-        client.setApiKey(apiKey);
+        client = new AgentClient(apiKey);
     }
 
     public static void init(String apiKey){
@@ -44,13 +43,6 @@ public class Agent {
             instance = new Agent(apiKey);
     }
 
-
-    //Should be called when needed
-    private static synchronized Agent getInstance() {
-            if(instance == null)
-                instance = new Agent(apiKey);
-            return instance;
-    }
 
     public static void latestAlbums (Integer size, Integer page, AgentCallback<SearchResult.Albums> callback) {
         request(client.getAgent().getLatestAlbums(size, page), callback);
@@ -80,7 +72,7 @@ public class Agent {
         request(client.getAgent().getArtistAlbums(id, page, size), callback);
     }
 
-    private static void searchAll(String term, AgentCallback<SearchResult> callback){
+    public static void searchAll(String term, AgentCallback<SearchResult> callback){
         request(client.getAgent().search(term), callback);
     }
 

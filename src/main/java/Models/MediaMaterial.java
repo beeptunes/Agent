@@ -17,6 +17,7 @@ public abstract class MediaMaterial {
 	}
 	@Override
 	public boolean equals(Object obj) {
-		return getId().equals(obj);
+		final MediaMaterial mediaMaterial = (MediaMaterial) obj;
+		return getId().equals(mediaMaterial.getId());
 	}
 }

@@ -59,7 +59,4 @@ class AgentClient {
         return agent;
     }
 
-    void setApiKey(String apiKey) {
-        this.apiKey = apiKey;
-    }
 }
